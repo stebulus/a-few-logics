@@ -25,4 +25,133 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{The three-valued Kleene logic}
+
+\begin{tabular}{cc|ccc}
+\multicolumn{2}{c|}{$p\land q$} & \multicolumn{3}{c}{$q$} \\
+& & $1$ & $i$ & $0$ \\
+\hline
+    & $1$ & $1$ & $i$ & $0$ \\
+$p$ & $i$ & $i$ & $i$ & $0$ \\
+    & $0$ & $0$ & $0$ & $0$
+\end{tabular}
+\hfill
+\begin{tabular}{cc|ccc}
+\multicolumn{2}{c|}{$p\lor q$} & \multicolumn{3}{c}{$q$} \\
+& & $1$ & $i$ & $0$ \\
+\hline
+    & $1$ & $1$ & $1$ & $1$ \\
+$p$ & $i$ & $1$ & $i$ & $i$ \\
+    & $0$ & $1$ & $i$ & $0$
+\end{tabular}
+\hfill
+\begin{tabular}{c|c}
+$p$ & $\lnot p$ \\
+\hline
+$1$ & $0$ \\
+$i$ & $i$ \\
+$0$ & $1$
+\end{tabular}
+
+\vfill
+
+\begin{minipage}{.5\textwidth}
+\begin{itemize}
+\item $i$: ``neither true nor false''
+\item $p\land q$ is true if both $p,q$ true
+\item $p\land q$ is false if $p$ or $q$ false
+\item $p\to q$ same as $\lnot p\lor q$
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{tabular}{cc|ccc}
+\multicolumn{2}{c|}{$p\to q$} & \multicolumn{3}{c}{$q$} \\
+& & $1$ & $i$ & $0$ \\
+\hline
+    & $1$ & $1$ & $i$ & $0$ \\
+$p$ & $i$ & $1$ & $i$ & $i$ \\
+    & $0$ & $1$ & $1$ & $1$
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Modus ponens in Kleene logic}
+
+\begin{tabular}{cc|c|c|c}
+$p$ & $q$ & $p\to q$ & $p\land(p\to q)$ & $p\land(p\to q)\to q$ \\
+\hline
+$1$ & $1$ & $1$ & $1$ & $1$ \\
+$1$ & $i$ & $i$ & $i$ & $i$ \\
+$1$ & $0$ & $0$ & $0$ & $1$ \\
+$i$ & $1$ & $1$ & $i$ & $1$ \\
+$i$ & $i$ & $i$ & $i$ & $i$ \\
+$i$ & $0$ & $i$ & $i$ & $i$ \\
+$0$ & $1$ & $1$ & $0$ & $1$ \\
+$0$ & $i$ & $1$ & $0$ & $1$ \\
+$0$ & $0$ & $1$ & $0$ & $1$
+\end{tabular}
+
+\vfill
+
+\begin{itemize}
+\item $p\land(p\to q)\to q$ is not a tautology
+\item but if $p$ and $p\to q$ are true, then so is $q$\\
+    (modus ponens is valid)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Deduction theorem}
+
+\begin{tabular}{c|l}
+\hline
+$\vDash A\to B$ & $A\to B$ is a tautology \\
+    & (true no matter what $A,B$ are) \\
+\hline
+$A\vDash B$ & when $A$ is true, so is $B$ \\
+    & (so, $B$ can be inferred from $A$) \\
+\hline
+\end{tabular}
+
+\vfill
+
+Equivalent in classical logic, but not in Kleene logic.
+
+Classical logic has a ``deduction theorem''.
+
+\vfill
+
+$K_3$ has no tautologies at all, not even $p\to p$.
+
+\vfill
+
+\end{frame}
+
+\begin{frame}{Some other multi-valued logics}
+LP (``Logic of Paradox'')
+\begin{itemize}
+\item same definitions of $\lnot$, $\land$, $\lor$, $\to$ as Kleene logic
+\item $i$ taken to mean ``both true and false''
+\item $A\vDash B$ if when $A$ is true ($1$ or $i$), so is $B$
+\item $p\land (p\to q)\to q$ is a tautology, but modus ponens not valid
+\end{itemize}
+
+\vfill
+
+Three-valued \L ukasiewicz logic
+\begin{itemize}
+\item like Kleene logic, except $i\to i$ has value $1$
+\item ($p\to q$ not the same as $\lnot p\lor q$)
+\item has modus ponens, has contraposition, no excluded middle
+\item weird deduction thm: $A\vDash B$ iff $\vDash A\to(A\to B)$
+\end{itemize}
+
+\vfill
+
+And lots more\dots
+
+\vfill
+
+\end{frame}
+
 \end{document}
