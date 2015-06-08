@@ -1,5 +1,133 @@
 \documentclass{beamer}
+\newcommand{\nec}{\square}
+\newcommand{\poss}{\Diamond}
 \begin{document}
+
+\begin{frame}{Modal logic}
+Modal operators:
+\[ \left.\begin{aligned}
+    &\nec p && \text{``$p$ is necessary''} \\
+    &\poss p && \text{``$p$ is possible''}
+\end{aligned}\right\}
+    \text{related by $\nec p = \lnot\poss\lnot p$} \]
+Many kinds of necessity:
+\begin{itemize}
+\item logical
+\item physical
+\item metaphysical
+\item moral
+\item practical
+\end{itemize}
+Other modalities:
+\begin{itemize}
+\item $p$ has always been true/will eventually be true
+\item $p$ is known/believed/said to be true
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Axioms and rules found in modal logics}
+Often:
+\begin{itemize}
+\item $\nec (p\to q) \to \nec p \to \nec q$
+\item if $A$ is a theorem then $\nec A$ is a theorem
+\end{itemize}
+Sometimes:
+\begin{itemize}
+\item $\nec p \to \nec\nec p$ (also the dual $\poss\poss p \to \poss p$)
+\item $\nec p \to p$ (also the dual $p\to\poss p$)
+\item $\poss\nec p \to p$ (also the dual $p\to\nec\poss p$)
+\item $\nec p \to \poss p$
+\end{itemize}
+Rarely:
+\begin{itemize}
+\item $p\to\nec p$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example of a proof in modal logic}
+Often:
+\begin{itemize}
+\item $\nec (p\to q) \to \nec p \to \nec q$
+\item if $A$ is a theorem then $\nec A$ is a theorem
+\end{itemize}
+
+\vfill
+\hrule
+\vfill
+
+Theorem: $\nec p\lor \nec q \to \nec (p\lor q)$
+\vfill
+Proof:
+
+$p\to p\lor q$ is a theorem.
+
+Therefore $\nec (p\to p\lor q)$ is a theorem.
+
+Therefore $\nec p\to \nec(p\lor q)$.
+
+Similarly, $\nec q\to \nec(p\lor q)$.
+
+Therefore $\nec p\lor\nec q\to\nec(p\lor q)$.
+\vfill
+\end{frame}
+
+\begin{frame}{Possible worlds}
+Classical propositional logic:
+\begin{itemize}
+\item ``interpretation'': choice of truth values for variables $p,q,r,\dotsc$
+\item ``theorem'': formula which is true in all interpretations
+\end{itemize}
+\vfill
+``Normal'' modal logic:
+\begin{itemize}
+\item ``interpretation'':
+    \begin{itemize}
+    \item collection of worlds, each with truth values for the variables
+    \item some worlds can see other worlds (and/or themselves)
+    \item ``$\nec p$'' is true at $W$ if $p$ true at all worlds that $W$ can see
+    \item ``$\poss p$'' is true at $W$ if $p$ true at some world that $W$ can see
+    \end{itemize}
+\item ``theorem'': formula true in all worlds in all interpretations
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example of a counterexample using possible worlds}
+$\nec(p\lor q)\to\nec p\lor\nec q$ is not a theorem.
+\vfill
+Counterexample:
+
+\addvspace{\baselineskip}
+Two worlds, each world seeing itself and the other.
+
+\addvspace{\baselineskip}
+\begin{tabular}{c|cc|cc|ccc}
+World & $p$ & $q$ & $p\lor q$ & $\nec (p\lor q)$ & $\nec p$ & $\nec q$ & $\nec p\lor\nec q$ \\
+\hline
+1 & $1$ & $0$ & $1$ & $1$ & $0$ & $0$ & $0$ \\
+2 & $0$ & $1$ & $1$ & $1$ & $0$ & $0$ & $0$ \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Axioms vs possible worlds}
+
+Axioms correspond to conditions on the ``seeing'' relation:
+
+\vfill
+
+\begin{tabular}{lll}
+$\nec p \to \nec\nec p$ & ``seeing'' is transitive \\
+\\
+$\nec p \to p$ & ``seeing'' is reflexive \\
+    & (every world can see itself) \\
+\\
+$\poss\nec p \to p$ & ``seeing'' is symmetric \\
+    & (if I see you, you can see me) \\
+\\
+$\nec p \to \poss p$
+    & every world can see at least one world
+\end{tabular}
+
+\end{frame}
 
 \begin{frame}{Reasons to want more than two truth values}
 \begin{itemize}
