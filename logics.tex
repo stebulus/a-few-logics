@@ -351,26 +351,26 @@ $\nec p \to \poss p$
 \end{frame}
 
 \begin{frame}{More asymmetry of negation}
-\begin{minipage}{.35\textwidth}
+\begin{minipage}{.30\textwidth}
 \begin{align*}
     (p\lor\lnot p\to q)&\to q &\times \\
     (p\lor\lnot p\to\lnot q)&\to \lnot q &\checkmark
 \end{align*}
 
-\addvspace{3\baselineskip}
-Corollary: $\lnot\lnot (p\lor\lnot p)$
+\addvspace{9\baselineskip}
+Corollary:\\
+$\lnot\lnot (p\lor\lnot p)$
 \end{minipage}
 \hfill
-\begin{minipage}{.50\textwidth}
+\begin{minipage}[c]{.55\textwidth}
 Sketch of proof:
 \begin{enumerate}
 \item $p\lor\lnot p\to\lnot q$ (suppose)
-\item $\lnot p\to\lnot q$
-\item $p\to\lnot q$
-\item $q\to\lnot p$ (by contraposition)
-\item $q\to\lnot q$ (by transitivity)
-\item $q\to q\to\bot$
-\item $q\to\bot$ (by contraction)
+\item $q\to\lnot(p\lor\lnot p)$
+    (contraposition)
+\item $q\to\lnot p\land\lnot\lnot p$
+    (De Morgan)
+\item $q\to\bot$
 \item $\lnot q$
 \end{enumerate}
 \end{minipage}
