@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usepackage[normalem]{ulem}
 \newcommand{\nec}{\square}
 \newcommand{\poss}{\Diamond}
 \newcommand{\sect}[1]{\begin{frame}\centerline{\large #1}\end{frame}}
@@ -289,6 +290,116 @@ $\nec p \to \poss p$
     & every world can see at least one world
 \end{tabular}
 
+\end{frame}
+
+\sect{Intuitionistic logic}
+
+\begin{frame}{Intuitionistic logic}
+\begin{itemize}
+\item Intuitionism: a philosophy of mathematics
+    \begin{itemize}
+    \item A mathematical statement is ``true''
+        when a mathematician makes a mental ``construction''.
+    \end{itemize}
+\item Rejects nonconstructive principles such as
+    \begin{itemize}
+    \item $p\lor\lnot p$
+    \item $\lnot\lnot p\to p$
+    \item $(\lnot q\to\lnot p)\to (p\to q)$
+    \end{itemize}
+\item Axioms:
+    \begin{enumerate}
+    \item $A\to(B\to A)$
+    \item $(A\to (B\to C)) \to (A\to B) \to (A\to C)$
+    \item $\lnot A\to (A\to B)$
+    \item \sout{$\lnot\lnot A\to A$}
+    \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Asymmetry of negation}
+
+\addvspace{\baselineskip}
+\begin{tabular}{ccccccccc}
+    $A$
+    & $\to$ & $\lnot\lnot A$
+    & $\leftrightarrow$ & $\lnot\lnot\lnot\lnot A$
+    & $\leftrightarrow$ & $\lnot\lnot\lnot\lnot\lnot\lnot A$
+    & $\leftrightarrow$ & $\dotsb$ \\
+    \\
+    & $\lnot A$
+    & $\leftrightarrow$ & $\lnot\lnot\lnot A$
+    & $\leftrightarrow$ & $\lnot\lnot\lnot\lnot\lnot A$
+    & $\leftrightarrow$ & $\dotsb$
+\end{tabular}
+
+\vfill
+
+\begin{minipage}{.45\textwidth}
+\begin{align*}
+(p\to q) &\to (\lnot q\to\lnot p) & \checkmark \\
+(\lnot q\to\lnot p) &\to (p\to q) & \times \\
+(p\to\lnot q) &\to (q\to\lnot p) & \checkmark \\
+(\lnot p\to q) &\to (\lnot q\to p) & \times
+\end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\textwidth}
+\begin{align*}
+\lnot (p\lor q) &\to \lnot p\land \lnot q & \checkmark \\
+\lnot p\land \lnot q &\to \lnot (p\lor q) & \checkmark \\
+\lnot (p\land q) &\to \lnot p\lor \lnot q & \times \\
+\lnot p\lor\lnot q &\to \lnot (p\land q) & \checkmark
+\end{align*}
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}{More asymmetry of negation}
+\begin{minipage}{.35\textwidth}
+\begin{align*}
+    (p\lor\lnot p\to q)&\to q &\times \\
+    (p\lor\lnot p\to\lnot q)&\to \lnot q &\checkmark
+\end{align*}
+
+\addvspace{3\baselineskip}
+Corollary: $\lnot\lnot (p\lor\lnot p)$
+\end{minipage}
+\hfill
+\begin{minipage}{.50\textwidth}
+Sketch of proof:
+\begin{enumerate}
+\item $p\lor\lnot p\to\lnot q$ (suppose)
+\item $\lnot p\to\lnot q$
+\item $p\to\lnot q$
+\item $q\to\lnot p$ (by contraposition)
+\item $q\to\lnot q$ (by transitivity)
+\item $q\to q\to\bot$
+\item $q\to\bot$ (by contraction)
+\item $\lnot q$
+\end{enumerate}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Grab bag}
+
+\begin{itemize}
+\item Intuitionistic logic is part of classical logic
+
+    (The part you get by omitting double negation, etc.)
+
+\item Classical logic is part of intuitionistic logic
+
+    ($A$ is classical theorem iff $\lnot\lnot A$ is intuitionistic theorem)
+
+\item Intuitionistic logic can be treated as a classical modal logic
+
+    ($\nec p$: ``$p$ is proved'')
+
+\item Intuitionistic logic has a complete topological model
+
+    (``truth values'' are open sets in the real line)
+\end{itemize}
 \end{frame}
 
 \sect{Multi-valued logic}
