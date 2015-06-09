@@ -4,6 +4,165 @@
 \newcommand{\sect}[1]{\begin{frame}\centerline{\large #1}\end{frame}}
 \begin{document}
 
+\sect{A few species of logic}
+
+\sect{Classical logic}
+
+\begin{frame}{Classical logic}
+
+\begin{tabular}{cc|c}
+\multicolumn{3}{c}{``and''} \\
+$p$ & $q$ & $p\land q$ \\
+\hline
+$1$ & $1$ & $1$ \\
+$1$ & $0$ & $0$ \\
+$0$ & $1$ & $0$ \\
+$0$ & $0$ & $0$
+\end{tabular}
+\hfill
+\begin{tabular}{cc|c}
+\multicolumn{3}{c}{``or''} \\
+$p$ & $q$ & $p\lor q$ \\
+\hline
+$1$ & $1$ & $1$ \\
+$1$ & $0$ & $1$ \\
+$0$ & $1$ & $1$ \\
+$0$ & $0$ & $0$
+\end{tabular}
+\hfill
+\begin{tabular}{c|c}
+\multicolumn{2}{c}{``not''} \\
+$p$ & $\lnot p$ \\
+\hline
+$1$ & $0$ \\
+$0$ & $1$ \\
+\\
+\\
+\end{tabular}
+
+\vfill
+
+\begin{minipage}{.5\textwidth}
+\begin{itemize}
+\item like high school algebra, but variables take values $0$ and $1$
+    (resp., false and true)
+\item operations $\land$, $\lor$, $\lnot$, $\to$ instead of $+$, $\cdot$
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{tabular}{cc|c}
+\multicolumn{3}{c}{``implies''} \\
+$p$ & $q$ & $p\to q$ \\
+\hline
+$1$ & $1$ & $1$ \\
+$1$ & $0$ & $0$ \\
+$0$ & $1$ & $1$ \\
+$0$ & $0$ & $1$
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Truth tables}
+
+Verification that $(q\to r)\to (p\to q)\to (p\to r)$ is a theorem:
+
+\vfill
+
+\begin{tabular}{ccc|ccc|cc}
+    & & & $A$ & $B$ & $C$ \\
+$p$ & $q$ & $r$ & $q\to r$ & $p\to q$ & $p\to r$ & $B\to C$ & $A\to B\to C$ \\
+\hline
+$1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & \color{blue}{$1$} \\
+$1$ & $1$ & $0$ & $0$ & $1$ & $0$ & $0$ & \color{blue}{$1$} \\
+$1$ & $0$ & $1$ & $1$ & $0$ & $1$ & $1$ & \color{blue}{$1$} \\
+$1$ & $0$ & $0$ & $1$ & $0$ & $0$ & $1$ & \color{blue}{$1$} \\
+$0$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & \color{blue}{$1$} \\
+$0$ & $1$ & $0$ & $0$ & $1$ & $1$ & $1$ & \color{blue}{$1$} \\
+$0$ & $0$ & $1$ & $1$ & $1$ & $1$ & $1$ & \color{blue}{$1$} \\
+$0$ & $0$ & $0$ & $1$ & $1$ & $1$ & $1$ & \color{blue}{$1$}
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Axioms and rules for (part of) classical logic}
+Axioms (all formulas of these forms are free):
+\begin{enumerate}
+\item $A\to(B\to A)$
+\item $(A\to (B\to C)) \to (A\to B) \to (A\to C)$
+\item $\neg A\to (A\to B)$
+\item $\neg\neg A\to A$
+\end{enumerate}
+\vfill
+Rule (how to get new formulas):
+\begin{itemize}
+\item (Modus Ponens) If you have $A$ and $A\to B$, you can have $B$.
+\end{itemize}
+\vfill
+\end{frame}
+
+\begin{frame}{Example of an axiomatic proof}
+\begin{tabular}{@{\small}r@{ \small}l}
+Ax1.& $A\to(B\to A)$ \\
+Ax2.& $(A\to (B\to C)) \to (A\to B) \to (A\to C)$
+\end{tabular}
+
+\addvspace{.5\baselineskip}
+
+\hrule
+
+\addvspace{.5\baselineskip}
+
+\begin{tabular}{@{\small}r@{ \small}l@{ \small}l}
+1.& $(p\to q\to r) \to  (p\to q) \to  (p\to r)$ & Ax2 \\
+2.& $\begin{aligned}[t]
+    &\big[(p\to q\to r)\to(p\to q)\to(p\to r)\big]\\
+    &\to (q\to r) \to \big[(p\to q\to r)\to(p\to q)\to(p\to r)\big]
+    \end{aligned}$
+    & Ax1 \\
+3.& $(q\to r)\to \big[(p\to q\to r)\to(p\to q)\to(p\to r)\big]$
+    & MP (2,3) \\
+4.& $\begin{aligned}[t]
+    &\big[(q\to r)\to ((p\to q\to r)\to(p\to q)\to(p\to r))\big] \\
+    &\to \big[(q\to r)\to (p\to q\to r)\big] \\
+    &\to \big[(q\to r)\to (p\to q)\to (p\to r)\big]
+    \end{aligned}$
+    & Ax2 \\
+5.& $\begin{aligned}[t]
+    &\big[(q\to r)\to (p\to q\to r)\big] \\
+    &\to \big[(q\to r)\to (p\to q)\to (p\to r)\big]
+    \end{aligned}$
+    & MP (3,4) \\
+6.& $(q\to r)\to (p\to q\to r)$ & Ax1 \\
+7.& $(q\to r)\to (p\to q)\to (p\to r)$
+    & MP (5,6)
+\end{tabular}
+\end{frame}
+
+\begin{frame}{What's not to like?}
+
+Nonconstructive principles:
+\begin{itemize}
+\item $p\lor\lnot p$
+\item $\lnot\lnot p\to p$
+\item $(\neg q\to\neg p)\to (p\to q)$
+\end{itemize}
+
+Explosion:
+\begin{itemize}
+\item $p\land\lnot p\to q$
+\end{itemize}
+
+Paradoxes of material implication:
+\begin{itemize}
+\item $p\to (q\to p)$
+\item $\lnot p\to (p\to q)$
+\item $\lnot(p\to q)\to p$
+\item $(p\land q\to r) \to (p\to r)\lor (q\to r)$
+\item $(p\to q)\land (u\to v)\to (p\to v)\lor (u\to q)$
+\end{itemize}
+\vfill
+\end{frame}
+
 \sect{Modal logic}
 
 \begin{frame}{Modal logic}
