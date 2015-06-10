@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usepackage{lplfitch}
 \usepackage[normalem]{ulem}
 \newcommand{\nec}{\square}
 \newcommand{\poss}{\Diamond}
@@ -550,6 +551,123 @@ And lots more\dots
 
 \vfill
 
+\end{frame}
+
+\sect{Relevance logic}
+
+\begin{frame}{Subproofs}
+
+\begin{minipage}{.45\textwidth}
+\fitchprf{}{
+    \subproof{\pline{\formula{q\to r}}}{
+        \subproof{\pline{\formula{p\to q}}}{
+            \subproof{\pline{\formula{p}}}{
+                \pline{\formula{q}}\\
+                \pline{\formula{r}}
+            }
+            \pline{\formula{p\to r}}
+        }
+        \pline{\formula{(p\to q)\to (p\to r)}}
+    }
+    \pline{\formula{(q\to r)\to (p\to q)\to (p\to r)}}
+}
+\end{minipage}
+\hfill
+\begin{minipage}{.35\textwidth}
+Suppose $A$.\\
+Prove $B$.\\
+Conclude $A\to B$.
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}{True statement implied by anything}
+
+$p\to (q\to p)$\hfill (but $q$ not relevant to $p$!)
+
+\vfill
+
+Proof in a system with subproofs:
+
+\addvspace{\baselineskip}
+\begin{minipage}{.45\textwidth}
+\fitchprf{}{
+    \subproof{\pline{\formula{p}}}{
+        \subproof{\pline{\formula{q}}}{
+        \pline{\formula{p}}
+        }
+        \pline{\formula{q\to p}}
+    }
+    \pline{\formula{p\to(q\to p)}}
+}
+\end{minipage}
+\hfill
+\begin{minipage}{.35\textwidth}
+Suppose $A$.\\
+Prove $B$.\\
+Conclude $A\to B$.
+
+\addvspace{.5\baselineskip}
+\qquad vs
+
+\addvspace{.5\baselineskip}
+Suppose $A$.\\
+Prove $B$ using $A$.\\
+Conclude $A\to B$.
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Track use of assumptions}
+
+\begin{minipage}{.45\textwidth}
+\fitchprf{}{
+    \subproof{\pline{\formula{q\to r_{\quad 1}}}}{
+        \subproof{\pline{\formula{p\to q_{\quad 2}}}}{
+            \subproof{\pline{\formula{p_{\quad 3}}}}{
+                \pline{\formula{q_{\quad 2,3}}}\\
+                \pline{\formula{r_{\quad 1,2,3}}}
+            }
+            \pline{\formula{p\to r_{\quad 1,2}}}
+        }
+        \pline{\formula{(p\to q)\to (p\to r)_{\quad 1}}}
+    }
+    \pline{\formula{(q\to r)\to (p\to q)\to (p\to r)}}
+}
+\end{minipage}
+\hfill
+\begin{minipage}{.35\textwidth}
+Suppose $A$.\\
+Prove $B$.\\
+Conclude $A\to B$.
+
+\addvspace{.5\baselineskip}
+\qquad vs
+
+\addvspace{.5\baselineskip}
+Suppose $A$.\\
+Prove $B$ using $A$.\\
+Conclude $A\to B$.
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Axioms for relevant implication}
+\begin{itemize}
+\item $A\to A$
+\item $(A\to B\to C)\to (A\to B)\to (A\to C)$
+\item $(A\to B)\to (B\to C)\to (A\to C)$
+\item $(A\to B\to C)\to (B\to A\to C)$
+\end{itemize}
+\vfill
+Can track use of assumption $A$ with ``$A\to$''!
+\end{frame}
+
+\begin{frame}{Grab bag}
+\begin{itemize}
+\item Most popular relevant logic, $R$, is undecidable.
+\item Possible-worlds semantics use a ternary ``seeing'' relation.
+\item No explosion: $p\land\lnot p\not\to q$.
+\item May distinguish two kinds of $\land$, two kinds of $\lor$.
+\end{itemize}
 \end{frame}
 
 \end{document}
